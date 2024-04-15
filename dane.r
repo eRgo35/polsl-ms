@@ -1,23 +1,22 @@
 # R < dane.r --no-save
 library(mvtnorm)
 
-#TODO: CHANGE COR TO 0.2, and VAR to different
-korelacja <- 0.5
-wariancja <- 2
+korelacja <- 0.2
+wariancja <- 1.5
 
 macierz_korelacji <- matrix(nrow = 2, ncol = 2, korelacja)
 
 print(macierz_korelacji)
-#   [0.5 0.5]
-#   [0.5 0.5]
+#   [0.2 0.2]
+#   [0.2 0.2]
 
 diag(macierz_korelacji) <- wariancja
 
 print(macierz_korelacji)
-#   [2  0.5]
-#   [0.5  2]
+#   [1.5  0.2]
+#   [0.2  1.5]
 
-set.seed(111) #TODO: CHANGE SEED
+set.seed(42069)
 
 n = 10000 # Ilosć danych
 dane <- rmvnorm(n = n, sigma = macierz_korelacji) 
