@@ -1,37 +1,50 @@
 # R < dane.r --no-save
+library(mvtnorm)
 
-library(mvtnorm) #wczytanie mvtnorm
-korelacja <- 0.5 #ustalenie wartosci korelacji
-macierz_korelacji <- matrix(korelacja, nrow=2, ncol= 2) #zbudowanie macierzy wypelnionej wartosciami korelacji
+#TODO: CHANGE COR TO 0.2, and VAR to different
+korelacja <- 0.5
+wariancja <- 2
+
+macierz_korelacji <- matrix(nrow = 2, ncol = 2, korelacja)
+
+print(macierz_korelacji)
 #   [0.5 0.5]
 #   [0.5 0.5]
 
-diag(macierz_korelacji) <- 2 #ustalamy wariancje zmiennych na przekatnej macierzy
-#daje nam to macierz ktora funkcji rmvnorm przekaze korelacje i wariancje w wlasciwym formacie
+diag(macierz_korelacji) <- wariancja
+
+print(macierz_korelacji)
 #   [2  0.5]
 #   [0.5  2]
 
-set.seed(111) #tak aby kod byl powtarzalny
-data <- rmvnorm(n=10000, sigma = macierz_korelacji) #generujemy 10000 obserwacji zmiennych
+set.seed(111) #TODO: CHANGE SEED
 
-print(data)
+n = 10000 # Ilosć danych
+dane <- rmvnorm(n = n, sigma = macierz_korelacji) 
 
-print(cor.test(data[,1], data[,2]))
+print(dane)
+
+test_korelacji <- cor.test(dane[,1], dane[,2])
+
+print(test_korelacji)
 
 p <- c()
 c <- c()
 
 for(i in 1:100){
- losoweDaneKolumny1 <- sample(data[,1], 100, replace=TRUE) #losujemy 100 liczb z kolumny 1           
- losoweDaneKolumny2 <- sample(data[,2], 100, replace=TRUE) #losujemy 100 liczb z kolumny 2
- test <- cor.test(losoweDaneKolumny1, losoweDaneKolumny2)
- p <- c(p, test$p.value)
- c <- c(c, test$estimate)
- print(cor.test(losoweDaneKolumny1, losoweDaneKolumny2))
+  losoweDaneKolumny1 <- sample(data[,1], 100, replace=TRUE)           
+  losoweDaneKolumny2 <- sample(data[,2], 100, replace=TRUE)
+ 
+  test_kor <- cor.test(losoweDaneKolumny1, losoweDaneKolumny2)
+ 
+  p_values <- c(test$p.value)
+  estimates <- c(test$estimate)
+ 
+  print(test_kor)
 }
-print(p)
-print(c)
 
+print(p_values)
+print(estimates)
 
 # Sprawdzenie poprawnosci wynikow za pomoca stats
 library(stats)
