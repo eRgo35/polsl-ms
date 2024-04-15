@@ -9,6 +9,7 @@ potem w R Studio można wybrać ten folder z tego prawego dolnego okna.
 
 Aby dodać zmiany, wpisujemy co zmieniliśmy, zaznaczamy wszystkie pliki, Commit > Push.
 
+Aby zaczytać nowe zmiany, robimy fetch i pull
 
 W przypadku linii poleceń:
 
@@ -31,4 +32,9 @@ git commit -m "<co zostało zmienione>"
 
 ```sh
 git push
+```
+
+Pobieranie najnowszych zmian
+```sh 
+git pull
 ```
