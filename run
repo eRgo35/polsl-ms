@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "Running: $1"
+
+R < $1 --no-save

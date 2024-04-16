@@ -2,7 +2,7 @@
 library(mvtnorm)
 
 korelacja <- 0.2
-wariancja <- 1.5
+wariancja <- 1
 
 macierz_korelacji <- matrix(nrow = 2, ncol = 2, korelacja)
 
@@ -34,7 +34,7 @@ for(i in 1:100){
   p_values <- c(test_kor$p.value)
   estimates <- c(test_kor$estimate)
  
-  print(test_kor)
+  # print(test_kor)
 }
 
 print(p_values)
