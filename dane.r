@@ -16,8 +16,18 @@ print(macierz_korelacji)
 #   [1  0.2]
 #   [0.2  1]
 
+wariancje <- 0.3
+wariancja <- 1 
+
+macierz_wariancji <- matrix(nrow = 3, ncol = 3, wariancje)
+
+print(macierz_wariancji)
+
+diag(macierz_wariancji) <- wariancja
+
 n = 1000 # Ilosć danych
 dane <- rmvnorm(n = n, sigma = macierz_korelacji) 
+hmmm <- rmvnorm(n = n, sigma = macierz_wariancji) 
 
 print(dane)
 
