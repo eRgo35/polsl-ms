@@ -16,19 +16,14 @@ print(macierz_korelacji)
 #   [1.5  0.2]
 #   [0.2  1.5]
 
-set.seed(42069)
-
-n = 10000 # Ilosć danych
+n = 1000 # Ilosć danych
 dane <- rmvnorm(n = n, sigma = macierz_korelacji) 
 
 print(dane)
 
-test_korelacji <- cor.test(dane[,1], dane[,2])
+test_korelacji <- cor.test(dane[,1], dane[,2]) # kolumna 1 z kolumną 2
 
 print(test_korelacji)
-
-p <- c()
-c <- c()
 
 for(i in 1:100){
   losoweDaneKolumny1 <- sample(data[,1], 100, replace=TRUE)           
