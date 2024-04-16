@@ -13,8 +13,8 @@ print(macierz_korelacji)
 diag(macierz_korelacji) <- wariancja
 
 print(macierz_korelacji)
-#   [1.5  0.2]
-#   [0.2  1.5]
+#   [1  0.2]
+#   [0.2  1]
 
 n = 1000 # Ilosć danych
 dane <- rmvnorm(n = n, sigma = macierz_korelacji) 
@@ -26,14 +26,13 @@ test_korelacji <- cor.test(dane[,1], dane[,2]) # kolumna 1 z kolumną 2
 print(test_korelacji)
 
 for(i in 1:100){
-  losoweDaneKolumny1 <- sample(dane[,1], 100, replace=TRUE)           
-  losoweDaneKolumny2 <- sample(dane[,2], 100, replace=TRUE)
- 
-  test_kor <- cor.test(losoweDaneKolumny1, losoweDaneKolumny2)
+  test_kor <- cor.test(sample(dane[,1], 100), sample(dane[,2], 100))
  
   p_values <- c(test_kor$p.value)
   estimates <- c(test_kor$estimate)
  
+  # print(test_kor)
+  # print(p_values)
   # print(test_kor)
 }
 
