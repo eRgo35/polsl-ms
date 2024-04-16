@@ -26,13 +26,13 @@ test_korelacji <- cor.test(dane[,1], dane[,2]) # kolumna 1 z kolumną 2
 print(test_korelacji)
 
 for(i in 1:100){
-  losoweDaneKolumny1 <- sample(data[,1], 100, replace=TRUE)           
-  losoweDaneKolumny2 <- sample(data[,2], 100, replace=TRUE)
+  losoweDaneKolumny1 <- sample(dane[,1], 100, replace=TRUE)           
+  losoweDaneKolumny2 <- sample(dane[,2], 100, replace=TRUE)
  
   test_kor <- cor.test(losoweDaneKolumny1, losoweDaneKolumny2)
  
-  p_values <- c(test$p.value)
-  estimates <- c(test$estimate)
+  p_values <- c(test_kor$p.value)
+  estimates <- c(test_kor$estimate)
  
   print(test_kor)
 }
