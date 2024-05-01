@@ -1,6 +1,6 @@
 # Projekt MS
 
-Metody do implementacji: `Holm`, `Hochberg` i `Hommelc`
+Metoda do implementacji: `Romano-Wolf` :wolf:
 
 ## Praca z repo
 
