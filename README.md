@@ -16,7 +16,7 @@ Visual Studio Code, setup do debuggowania
 1. Pobierz Visual Studio Code: [Link](https://code.visualstudio.com/)
 2. Pobierz `R` oraz `RStudio`
 3. W Visual Studio Codzie pobierz rozszerzenia: `R`, `R Debugger` oraz `Live Share`
-4. W samym R zainstaluj pakiet według liniki jak poniżej
+4. W samym R zainstaluj pakiet według linijki jak poniżej
 5. Po otworzeniu pliku można Debuggować po wciśnięciu `ctrl+shift+s`
 
 ```R
