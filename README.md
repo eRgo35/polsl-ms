@@ -11,6 +11,19 @@ Aby dodać zmiany, wpisujemy co zmieniliśmy, zaznaczamy wszystkie pliki, Commit
 
 Aby zaczytać nowe zmiany, robimy fetch i pull
 
+Visual Studio Code, setup do debuggowania
+
+1. Pobierz Visual Studio Code: [Link](https://code.visualstudio.com/)
+2. Pobierz `R` oraz `RStudio`
+3. W Visual Studio Codzie pobierz rozszerzenia: `R`, `R Debugger` oraz `Live Share`
+4. W samym R zainstaluj pakiet według liniki jak poniżej
+5. Po otworzeniu pliku można Debuggować po wciśnięciu `ctrl+shift+s`
+
+```R
+install.packages("vscDebugger", repos = "https://manuelhentschel.r-universe.dev")
+```
+
+
 W przypadku linii poleceń:
 
 ```sh
@@ -22,11 +35,12 @@ cd posls-ms
 ```
 
 Dodawanie nowych zmian:
-```sh 
+
+```sh
 git add .
 ```
 
-```sh 
+```sh
 git commit -m "<co zostało zmienione>"
 ```
 
@@ -35,6 +49,7 @@ git push
 ```
 
 Pobieranie najnowszych zmian
-```sh 
+
+```sh
 git pull
 ```
