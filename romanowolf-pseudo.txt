@@ -1,0 +1,53 @@
+# ładowanie danych
+dane <- baza-MS.csv
+
+# przypisanie
+Y <- dane[,1]
+X1 <- dane[,2]
+...
+X10 <- dane[,11]
+
+# lista
+X <- list(X1, ..., X10) 
+
+# korelacja
+correlation_vector <- c(cor.test(Y, X1)$estimate, ..., cor.test(Y, X10)$estimate)
+correlation_p <- c(cor.test(Y, X1)$p.value, ..., cor.test(Y, X10)$p.value)
+
+# sortowanie
+sorted_indices <- order(correlation_p)
+sorted_correlation_vector <- correlation_vector[sorted_indices]
+sorted_correlation_p <- correlation_p[sorted_indices]
+
+# analiza danych
+# poziom istotności
+alpha <- 0.05
+
+# ilość odrzuconych hipotez
+rejected <- 0
+
+# ilość wybranych hipotez
+N <- length(sorted_correlation_p)
+
+# tutaj nie wiemy, czy tak miałoby to przebiegać.
+# sortujemy w pętli z odrzucaniem hipotez aż do skutku
+# pozostają wektory z hipotezami przyjętmi i odrzuconuymi
+flag <- 0
+
+while flag < 1
+    flag <- 1
+    for i in 1 : N
+        if (sorted_correlation_p[i] < alpha/(N-i+1))
+            flag <- 0
+            rejected <- rejected + 1
+            rejected_bin[i] <- 1
+        else 
+            selected <- i
+            break
+        end if
+    end for
+
+    # ponowne sortowanie
+    sorted_correlation_vector <- sorted_correlation_vector[selected:length(sorted_correlation_vector)]
+    sorted_correlation_p <- sorted_correlation_p[selected:length(sorted_correlation_p)]
+end while
