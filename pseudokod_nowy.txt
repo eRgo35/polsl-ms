@@ -1,0 +1,49 @@
+1. Wczytaj dane z pliku CSV
+    - Wczytaj plik CSV znajdujący się na dysku i przypisz dane do zmiennej "Dane"
+
+2. Przypisz kolumnę Y (zmienna zależna) oraz kolumny X (zmienne niezależne)
+    - Przypisz kolumnę "Y" do zmiennej Y
+    - Przypisz kolumny od 2 do 11 do zmiennej X
+
+3. Definiuj funkcję do obliczania statystyk testowych korelacji dla każdej kolumny X względem Y
+    - Dla każdej kolumny w X, oblicz statystykę testową korelacji z Y
+    - Zwróć listę statystyk
+
+4. Definiuj funkcję do permutacji i obliczania permutowanych statystyk testowych
+    - Określ liczbę kolumn w X jako n
+    - Stwórz macierz do przechowywania permutowanych statystyk o wymiarach M x n
+    - Dla każdej z M permutacji:
+        - Wymieszaj losowo wartości w Y
+        - Oblicz statystyki testowe korelacji dla wymieszanych wartości Y z kolumnami X
+        - Zapisz te statystyki w macierzy permutowanych statystyk
+    - Zwróć macierz permutowanych statystyk
+
+5. Definiuj funkcję do implementacji procedury Romano-Wolfa krok w dół
+    - Określ liczbę kolumn w X jako n
+    - Oblicz oryginalne statystyki testowe korelacji dla Y i X
+    - Posortuj statystyki malejąco według wartości bezwzględnych i zapisz odpowiadające im indeksy
+    - Posortuj kolumny X według posortowanych indeksów
+    - Oblicz permutowane statystyki testowe dla posortowanych kolumn X
+    - Ustaw początkową liczbę odrzuconych hipotez R na 0
+    - Dla każdej wartości s od 1 do n:
+        - Oblicz maksymalne wartości permutowanych statystyk dla pierwszych s kolumn
+        - Wyznacz próg jako kwantyl empiryczny na poziomie 1 - alpha
+        - Jeśli oryginalna statystyka testowa jest większa niż próg:
+            - Zwiększ wartość R
+        - W przeciwnym razie:
+            - Wypisz informację, że hipoteza nie jest odrzucona i przerwij pętlę
+    - Zwróć listę zawierającą liczbę odrzuconych hipotez R, posortowane indeksy oraz posortowane statystyki
+
+6. Ustaw wartość M dla permutacji na 10000 oraz poziom istotności alpha na 0.05
+
+7. Wywołaj funkcję Romano-Wolfa krok w dół i zapisz wyniki
+    - Przypisz wyniki funkcji do zmiennej "wynik"
+    - Wypisz liczbę odrzuconych hipotez
+
+8. Wyświetl odrzucone hipotezy
+    - Dla indeksów od 1 do R wyświetl nazwy kolumn odpowiadające odrzuconym hipotezom
+
+9. Wyświetl nieodrzucone hipotezy wraz z tytułem kolumny i wartością statystyki
+    - Jeśli liczba odrzuconych hipotez jest mniejsza niż całkowita liczba kolumn:
+        - Wyznacz indeksy nieodrzuconych hipotez
+        - Dla każdego indeksu nieodrzuconej hipotezy wyświetl nazwę kolumny oraz wartość statystyki
