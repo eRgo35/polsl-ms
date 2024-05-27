@@ -1,0 +1,49 @@
+# ładowanie danych
+dane <- baza-MS.csv
+
+# przypisanie zmiennych zależnych
+Y <- dane$1
+
+# przypisanie zmiennych niezależnych
+X <- dane[,2:11]
+
+ilość_permutacji <- 10000
+alfa <- 0.05
+
+# obliczanie statystyk testowych korelacji
+dla kolumn od 1 do X, wykonujemy cor.test(Y, X[,i]) i wyciągamy wartości statystyk i wyciągamy pwartości
+
+# sortowanie p-value malejąco według modułu
+# Skrypt: In particular, for two-sided testing problems, the test statistics would usually be based on absolute values.
+sortowanie_statystyk
+
+# permutacja danych oraz obliczanie zpermutowanych statystyk
+
+for (m in 1:M) {
+  permutowane_Y <- sample(Y)
+  permutowane_statystyki <- dla kolumn od 1 do X, wykonujemy cor.test(Y, X[,i]) i wyciągamy wartości statystyk
+}
+
+for (s in 1 : liczba kolumn w X) {
+    maks <- szukamy maksymalnych wartości statystyk 
+    kwantyl <- kwantyl(maks, 1-alfa)
+    
+    if (moduł oryginalnej statystyki testowej jest większy od kwantyla ) {
+      odrzycamy hipotezę
+    }
+    else {
+      przerywamy pętlę
+    }
+}
+
+# wyświetlamy odrzucone i nieodrzucone hipotezy
+
+## Obliczanie skorygowanych wartośći p-value 
+skorygowane_pvalue[1]<- (ilość kiedy max(pvalue) jest większe od statystyk testowych + 1) / (ilosc resampligów + 1)
+
+for ( s in 2 : liczba kolumn) {
+    początkowe_pvalue[s] <- (ilość kiedy max(pvalue) jest większe od statystyk testowych + 1) / (ilosc resampligów + 1)
+    skorygowane_pvalue[s] <-  max(początkowe_pvalue[s],  skorygowane_pvalue[s-1])
+}
+
+# wyświetlamy skorygowane pvalues
